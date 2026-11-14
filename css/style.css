@@ -1,0 +1,387 @@
+﻿/* ===== CSS Variables ===== */
+:root {
+  --color-pink: #E91E8C;
+  --color-teal: #008080;
+  --color-cream: #FDF6EC;
+  --color-white: #FFFFFF;
+  --color-red-warn: #DC2626;
+  
+  /* Light mode defaults */
+  --bg-page: var(--color-cream);
+  --bg-card: var(--color-white);
+  --text-primary: #1A1A2E;
+  --text-secondary: #555570;
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --spacing-card-gap: 16px;
+  --border-color: #E5E5E5;
+}
+
+[data-theme="dark"] {
+  --bg-page: #121212;
+  --bg-card: #1E1E1E;
+  --text-primary: #F0F0F0;
+  --text-secondary: #AAAAAA;
+  --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.4);
+  --border-color: #333333;
+}
+
+/* ===== Global Styles ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  padding: 20px;
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ===== Theme Toggle Button ===== */
+#theme-toggle-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid var(--color-teal);
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: var(--shadow-card);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+#theme-toggle-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== Card Styles ===== */
+.card {
+  background-color: var(--bg-card);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: var(--spacing-card-gap);
+  box-shadow: var(--shadow-card);
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ===== Card 1: Header & Balance ===== */
+#card-header h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: var(--color-pink);
+  text-align: center;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.balance {
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--color-teal);
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.balance.exceeded {
+  color: var(--color-red-warn);
+}
+
+#monthly-summary {
+  text-align: center;
+  margin-bottom: 24px;
+  padding: 16px;
+  background-color: var(--bg-page);
+  border-radius: 8px;
+}
+
+.monthly-label {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.monthly-value {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--color-teal);
+}
+
+#budget-limit-section {
+  margin-top: 20px;
+}
+
+#budget-limit-section label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+
+#budget-limit-section input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  transition: border-color 0.3s ease;
+}
+
+#budget-limit-section input:focus {
+  outline: none;
+  border-color: var(--color-teal);
+}
+
+/* ===== Card 2: Form ===== */
+#card-form h2 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--color-teal);
+}
+
+.custom-category-input-wrapper {
+  display: flex;
+  gap: 8px;
+}
+
+.custom-category-input-wrapper input {
+  flex: 1;
+}
+
+#custom-category-btn {
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--color-pink);
+  color: white;
+  font-size: 24px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#custom-category-btn:hover {
+  background-color: #D11A7D;
+  transform: scale(1.05);
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--color-teal);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #006666;
+  transform: translateY(-2px);
+}
+
+.error-msg {
+  display: block;
+  color: var(--color-red-warn);
+  font-size: 13px;
+  margin-top: 6px;
+  min-height: 18px;
+}
+
+/* ===== Card 3: Transaction List & Chart ===== */
+#card-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+@media (max-width: 768px) {
+  #card-main {
+    grid-template-columns: 1fr;
+  }
+}
+
+#transaction-section h2,
+#chart-section h2 {
+  font-size: 20px;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+}
+
+.sort-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.sort-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.sort-group select {
+  flex: 1;
+  padding: 8px 12px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+}
+
+#transaction-list {
+  list-style: none;
+}
+
+#transaction-list li {
+  padding: 16px;
+  margin-bottom: 12px;
+  background-color: var(--bg-page);
+  border-radius: 8px;
+  border-left: 4px solid var(--color-teal);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#transaction-list li:hover {
+  transform: translateX(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.transaction-info {
+  flex: 1;
+}
+
+.transaction-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.transaction-amount {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-teal);
+  margin-bottom: 4px;
+}
+
+.transaction-category {
+  display: inline-block;
+  padding: 4px 12px;
+  background-color: var(--color-pink);
+  color: white;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.transaction-date {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+.btn-delete {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--color-pink);
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-delete:hover {
+  background-color: var(--color-red-warn);
+  transform: scale(1.05);
+}
+
+.empty-message {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-secondary);
+  font-size: 16px;
+}
+
+#chart-container {
+  position: relative;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#pie-chart {
+  max-height: 300px;
+}
+
+.chart-fallback {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 14px;
+  padding: 20px;
+}

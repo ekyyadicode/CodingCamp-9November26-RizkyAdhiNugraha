@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense & Budget Visualizer</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
+</head>
+<body>
+    <!-- Theme Toggle Button -->
+    <button id="theme-toggle-btn" aria-label="Toggle dark mode">🌙</button>
+
+    <!-- Card 1: Header dengan Balance -->
+    <div class="card" id="card-header">
+        <h1>Expense & Budget Visualizer</h1>
+        <p class="label">TOTAL BALANCE</p>
+        <p id="balance-display" class="balance">Rp 0</p>
+        
+        <div id="monthly-summary">
+            <p class="monthly-label">Pengeluaran Bulan <span id="current-month"></span></p>
+            <p class="monthly-value">Rp 0</p>
+        </div>
+
+        <div id="budget-limit-section">
+            <label for="input-budget">Batas Anggaran (Rp)</label>
+            <input type="text" id="input-budget" placeholder="Contoh: 1.000.000" maxlength="20">
+            <span class="error-msg" id="error-budget"></span>
+        </div>
+    </div>
+
+    <!-- Card 2: Form Tambah Transaksi -->
+    <div class="card" id="card-form">
+        <h2>Add Transaction</h2>
+        <form id="transaction-form">
+            <div class="form-group">
+                <label for="input-name">Nama Transaksi</label>
+                <input type="text" id="input-name" placeholder="Contoh: Makan siang" maxlength="100" required>
+                <span class="error-msg" id="error-name"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="input-amount">Jumlah (Rp)</label>
+                <input type="text" id="input-amount" placeholder="Contoh: 50.000" maxlength="20" required>
+                <span class="error-msg" id="error-amount"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="select-category">Kategori</label>
+                <select id="select-category" required>
+                    <option value="">Pilih kategori...</option>
+                </select>
+            </div>
+
+            <div class="form-group custom-category-group">
+                <label for="custom-category-input">Tambah Kategori Baru</label>
+                <div class="custom-category-input-wrapper">
+                    <input type="text" id="custom-category-input" placeholder="Nama kategori baru" maxlength="50">
+                    <button type="button" id="custom-category-btn">+</button>
+                </div>
+                <span class="error-msg" id="error-custom-category"></span>
+            </div>
+
+            <button type="submit" id="btn-submit" class="btn-primary">Tambah Transaksi</button>
+        </form>
+    </div>
+
+    <!-- Card 3: Daftar Transaksi dan Pie Chart -->
+    <div class="card" id="card-main">
+        <div id="transaction-section">
+            <h2>Riwayat Transaksi</h2>
+            <div class="sort-group">
+                <label for="select-sort">Urutkan:</label>
+                <select id="select-sort">
+                    <option value="default">Terbaru</option>
+                    <option value="price-desc">Harga: Tinggi ke Rendah</option>
+                    <option value="price-asc">Harga: Rendah ke Tinggi</option>
+                    <option value="category-asc">Kategori: A-Z</option>
+                </select>
+            </div>
+            <ul id="transaction-list"></ul>
+        </div>
+
+        <div id="chart-section">
+            <h2>Spending by Category</h2>
+            <div id="chart-container">
+                <canvas id="pie-chart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
